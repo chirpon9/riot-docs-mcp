@@ -3,7 +3,7 @@ requires = ["uv_build>=0.8.15,<0.9.0"]
 build-backend = "uv_build"
 
 [project]
-name = "hello-server"
+name = "riot_docs_server"
 version = "0.1.0"
 description = "An MCP server built with Smithery"
 authors = [
@@ -22,5 +22,5 @@ start = "smithery.cli.start:main" # Run the MCP server in production mode
 playground = "smithery.cli.playground:main" # Run server with interactive testing playground
 
 [tool.smithery]
-server = "hello_server.server:create_server" # Function that returns a patched FastMCP server
+server = "riot_docs_server.server:create_server" # Function that returns a patched FastMCP server
 log_level = "warning" # Production log level (optional, defaults to "warning")
