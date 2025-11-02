@@ -93,4 +93,83 @@ def create_server():
         except Exception as e:
             return f"Error reading file '{filename}': {str(e)}"
 
+    @server.resource("riot://api-overview")
+    def api_overview() -> str:
+        """
+        Overview of all available Riot Games API endpoints organized by game.
+        This resource provides a quick reference to all 31 available API documentation files.
+        """
+        return """# Riot Games API Documentation Overview
+
+This MCP server provides access to comprehensive documentation for Riot Games APIs across multiple titles.
+
+## Available APIs by Game
+
+### League of Legends (13 endpoints)
+- **account-v1.md** - Account management and cross-game identification
+- **champion-mastery-v4.md** - Champion mastery points and progression
+- **champion-v3.md** - Champion rotation information
+- **clash-v1.md** - Clash tournament data
+- **league-exp-v4.md** - Experimental league endpoints
+- **league-v4.md** - Ranked league and tier information
+- **lol-challenges-v1.md** - Challenge progression and rewards
+- **lol-rso-match-v1.md** - RSO match data
+- **lol-status-v4.md** - Server status and incidents
+- **match-v5.md** - Match history and detailed match data
+- **spectator-v5.md** - Live game spectator data
+- **summoner-v4.md** - Summoner profiles and basic info
+- **tournament-v5.md** - Tournament codes and management
+- **tournament-stub-v5.md** - Tournament testing stub
+
+### Teamfight Tactics (4 endpoints)
+- **tft-league-v1.md** - TFT ranked league data
+- **tft-match-v1.md** - TFT match history
+- **tft-status-v1.md** - TFT server status
+- **tft-summoner-v1.md** - TFT summoner profiles
+- **spectator-tft-v5.md** - TFT live game data
+
+### Valorant (6 endpoints)
+- **val-console-match-v1.md** - Console match data
+- **val-console-ranked-v1.md** - Console ranked data
+- **val-content-v1.md** - Game content and localization
+- **val-match-v1.md** - Match history and details
+- **val-ranked-v1.md** - Competitive ranked data
+- **val-status-v1.md** - Server status
+
+### Legends of Runeterra (5 endpoints)
+- **lor-deck-v1.md** - Deck codes and management
+- **lor-inventory-v1.md** - Player card inventory
+- **lor-match-v1.md** - Match history
+- **lor-ranked-v1.md** - Ranked leaderboards
+- **lor-status-v1.md** - Server status
+
+### Other (1 endpoint)
+- **riftbound-content-v1.md** - Riftbound game content
+
+## Usage
+Use `get_endpoint_docs(filename)` to retrieve the full documentation for any endpoint listed above.
+Use `list_available_docs()` to get a simple list of all available files.
+"""
+
+    @server.prompt()
+    def explain_endpoint(endpoint_name: str) -> list:
+        """
+        Generate a prompt to get a clear explanation of a specific Riot API endpoint.
+        This is useful when you need to understand what an endpoint does and how to use it.
+        
+        Args:
+            endpoint_name: The name of the endpoint (e.g., 'match-v5', 'summoner-v4')
+        """
+        return [
+            {
+                "role": "user",
+                "content": f"Please explain the {endpoint_name} Riot API endpoint. Include:\n"
+                          f"1. What data it provides\n"
+                          f"2. Common use cases\n"
+                          f"3. Key request parameters\n"
+                          f"4. Important response fields\n"
+                          f"5. Any rate limits or special considerations"
+            }
+        ]
+
     return server
