@@ -2,43 +2,65 @@
 
 [![smithery badge](https://smithery.ai/badge/@chirpon9/riot-docs-mcp)](https://smithery.ai/server/@chirpon9/riot-docs-mcp)
 
-An MCP server built with [Smithery CLI](https://smithery.ai/docs/getting_started/quickstart_build_python)
+A comprehensive MCP server providing access to Riot Games API documentation for League of Legends, Teamfight Tactics, Valorant, Legends of Runeterra, and more.
 
-## Prerequisites
+## Features
 
-- **Smithery API key**: Get yours at [smithery.ai/account/api-keys](https://smithery.ai/account/api-keys)
+This server provides two tools to access Riot API documentation:
 
-## Getting Started
+### Tools
 
-1. Run the server:
-   ```bash
-   uv run dev
-   ```
+1. **`list_available_docs()`** - Lists all 33 available Riot API endpoint documentation files
 
-2. Test interactively:
 
-   ```bash
-   uv run playground
-   ```
+2. **`get_endpoint_docs(filename: str)`** - Retrieves the full documentation for a specific endpoint
+   - Example: `get_endpoint_docs("match-v5.md")`
+   - Returns complete API documentation including endpoints, parameters, and response formats
 
-Try saying "Say hello to John" to test the example tool.
+## Installation
 
-## Development
+### For Windsurf / Claude Desktop / Other MCP Clients
 
-Your server code is in `src/hello_server/server.py`. Add or update your server capabilities there.
+Add this to your MCP configuration file:
 
-## Deploy
+**Mac:**
+```json
+{
+  "mcpServers": {
+    "riot-docs-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@chirpon9/riot-docs-mcp",
+        "--key",
+        "{SMITHERY API KEY}"
+      ]
+    }
+  }
+}
+```
 
-Ready to deploy? Push your code to GitHub and deploy to Smithery:
+**Windows:**
+```json
+{
+  "mcpServers": {
+    "riot-docs-mcp": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@chirpon9/riot-docs-mcp",
+        "--key",
+        "{smithery api key}"
+      ]
+    }
+  }
+}
+```
 
-1. Create a new repository at [github.com/new](https://github.com/new)
 
-2. Initialize git and push to GitHub:
-   ```bash
-   git add .
-   git commit -m "Hello world 👋"
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
-   git push -u origin main
-   ```
-
-3. Deploy your server to Smithery at [smithery.ai/new](https://smithery.ai/new)
