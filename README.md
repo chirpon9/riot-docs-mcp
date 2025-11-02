@@ -19,9 +19,27 @@ This server provides two tools to access Riot API documentation:
 
 ## Installation
 
-### For Windsurf / Claude Desktop / Other MCP Clients
 
-Add this to your MCP configuration file:
+Usage with claude desktop
+
+```json
+{
+  "mcpServers": {
+    "riot-docs": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/absolute/path/to/riot-docs",
+        "run",
+        "riot_docs_server"
+      ]
+    }
+  }
+}
+```
+
+### Option 2: 
+
 
 **Mac:**
 ```json
