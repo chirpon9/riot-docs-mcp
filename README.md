@@ -1,5 +1,7 @@
 # riot-docs
 
+[![smithery badge](https://smithery.ai/badge/@chirpon9/riot-docs-mcp)](https://smithery.ai/server/@chirpon9/riot-docs-mcp)
+
 An MCP server built with [Smithery CLI](https://smithery.ai/docs/getting_started/quickstart_build_python)
 
 ## Prerequisites
