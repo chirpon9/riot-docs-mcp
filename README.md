@@ -2,7 +2,7 @@
 
 [![smithery badge](https://smithery.ai/badge/@chirpon9/riot-docs-mcp)](https://smithery.ai/server/@chirpon9/riot-docs-mcp)
 
-A comprehensive MCP server providing access to Riot Games API documentation for League of Legends, Teamfight Tactics, Valorant, Legends of Runeterra, and more.
+MCP server providing access to Riot Games API documentation for League of Legends, Teamfight Tactics, Valorant, Legends of Runeterra, and more.
 
 ## Features
 
